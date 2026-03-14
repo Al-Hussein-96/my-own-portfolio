@@ -34,7 +34,6 @@ export const skills = [
   { name: "Scrum",                   icon: "📋", level: "Advanced",           pct: 83,  cat: "workflow" },
   { name: "Jira",                    icon: "🎯", level: "Advanced",           pct: 82,  cat: "workflow" },
   { name: "Notion",                  icon: "📝", level: "Advanced",           pct: 82,  cat: "workflow" },
-  { name: "Slack",                   icon: "💬", level: "Advanced",           pct: 82,  cat: "workflow" },
 ];
 
 export const skillCategories = [
@@ -87,28 +86,52 @@ export const projects: Project[] = [
     company: "Simco Group of Companies",
   },
   {
-    id: "admin",
-    title: "Admin Dashboard",
-    subtitle: "Internal Management Panel for Simpay",
+    id: "CAP10",
+    title: "Football platform",
+    subtitle: "Platform for amateur football players.",
     description:
       "Full-featured admin panel for managing agents, regions, and transactions. Real-time charts and role-based access control.",
-    stack: ["React.js", "TypeScript"],
+    stack: ["Kotlin", "Java", "Android", "MVVM", "Retrofit"],
     stackColors: ["purple", "blue", "pink", "blue"],
-    icon: "🖥️",
+    icon: "📱",
     gradient: "from-purple-950 to-violet-950",
-    company: "Simco Group of Companies",
+    company: "CAP10 Startup",
   },
   {
-    id: "auth",
-    title: "Auth Service",
-    subtitle: "JWT Microservice",
+    id: "Topup",
+    title: "Topup Recharge",
+    subtitle: "POS App for recharge and vouchers.",
     description:
-      "JWT-based authentication microservice with refresh tokens, reactive security context propagation, and granular permission scopes.",
-    stack: ["Kotlin", "Spring Security", "Redis", "Docker"],
+      "POS & Mobile app for transactions (DuPay, ePin, Google play, Itunes, Du, Salik)",
+    stack: ["Kotlin", "Ktor", "Offline-first", "WorkManager", "Performance"],
     stackColors: ["purple", "pink", "pink", "blue"],
-    icon: "🔐",
+    icon: "📱",
     gradient: "from-slate-950 to-blue-950",
-    company: "Simco Group of Companies",
+    company: "Axiom Telecom LLC",
+  },
+  {
+    id: "Support",
+    title: "Support Tracking App",
+    subtitle: "Mobile app for support team",
+    description:
+      "Open tickets, Site visits, Locations check-Ins.",
+    stack: ["Kotlin Multiplatfor" , "Koin", "Ktor", "Jetpack Compose"],
+    stackColors: ["purple", "pink", "pink", "blue"],
+    icon: "📱",
+    gradient: "from-slate-950 to-blue-950",
+    company: "Axiom Telecom LLC",
+  },
+  {
+    id: "Launcher",
+    title: "Launcher & Update App",
+    subtitle: "Custom App for MDM management on POS",
+    description:
+      "MDM, Lock/Unlock, Kiosk Mode, Push notifications",
+    stack: ["Kotlin" , "Device Owner", "Sunmi", "Mobiwire SDK", "Printers"],
+    stackColors: ["purple", "pink", "pink", "blue"],
+    icon: "📱",
+    gradient: "from-slate-950 to-blue-950",
+    company: "Axiom Telecom LLC",
   },
 ];
 
@@ -138,52 +161,28 @@ export const aiProjects = [
 
 export const blogPosts = [
   {
-    date: "Mar 2025",
-    tag: "Backend Engineering",
-    title: "Migrating from Ktor to Spring WebFlux: A Practical Guide",
-    excerpt:
-      "A deep dive into architectural decisions, reactive patterns, and gotchas I encountered moving a production payment service.",
-    url: "#",
-  },
-  {
-    date: "Jan 2025",
-    tag: "Database",
-    title: "R2DBC in Production: What Nobody Tells You",
-    excerpt:
-      "Partial unique indexes, soft-delete patterns, UPDATE quirks, and reactive transaction management — lessons from the trenches.",
-    url: "#",
-  },
-  {
-    date: "Nov 2024",
-    tag: "Security",
-    title: "Building Reactive Auth with Spring Security & JWT",
-    excerpt:
-      "How to propagate security context in a fully reactive pipeline without blocking the event loop.",
-    url: "#",
-  },
-  {
-    date: "Sep 2024",
-    tag: "Mobile",
-    title: "React Native + Expo for Backend Developers",
-    excerpt:
-      "A backend developer's honest take on building mobile apps — the good, the bad, and the iOS build system.",
-    url: "#",
-  },
-  {
-    date: "Jul 2024",
+    date: "Feb 2025",
     tag: "AI Engineering",
-    title: "Integrating Claude API into a Production Backend",
+    title: "Integrating AI (OCR) into Logistics: A Practical Success Story from Android Engineering",
     excerpt:
-      "Architecture patterns for adding LLM capabilities to existing microservices without leaking AI concerns into your domain layer.",
-    url: "#",
+      "How I introduced AI-driven automation into logistics and warehouse management using Google ML Kit — eliminating manual parcel data entry with a single photo.",
+    url: "https://medium.com/@m.alhussein.96/integrating-ai-ocr-into-logistics-a-practical-success-story-from-android-engineering-4c922c9550ed",
   },
   {
-    date: "May 2024",
-    tag: "DevOps",
-    title: "Flyway Migrations with R2DBC and Spring Boot 4",
+    date: "Oct 2024",
+    tag: "Android",
+    title: "Enhance Jetpack Compose Performance Using Baseline Profiles",
     excerpt:
-      "Why you need a separate HikariDataSource for Flyway and how to configure it without breaking reactive auto-configuration.",
-    url: "#",
+      "If you've developed an Android app using Jetpack Compose and noticed performance issues even in the release APK — this is how to fix it.",
+    url: "https://medium.com/@m.alhussein.96/enhance-jetpack-compose-performance-using-baseline-profiles-bc7d02a43229",
+  },
+  {
+    date: "Oct 2023",
+    tag: "Hardware",
+    title: "Zebra Hardware (Printers): Connect Android To Printers Guide I",
+    excerpt:
+      "A practical guide to connecting Android devices to Zebra printers via WiFi, Bluetooth Classic, and Bluetooth LE.",
+    url: "https://medium.com/@m.alhussein.96/zebra-hardware-printers-connect-android-to-printers-guide-i-7c1842ed8aa4",
   },
 ];
 

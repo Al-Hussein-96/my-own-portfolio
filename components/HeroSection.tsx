@@ -1,9 +1,9 @@
 export default function HeroSection() {
   return (
-    <section
-      id="hero"
-      className="relative z-10 min-h-screen flex items-center justify-center px-6 pt-28 pb-20"
-    >
+<section
+  id="hero"
+  className="relative z-10 min-h-screen flex items-center justify-center px-6 pt-12 pb-8"
+>
       <div className="max-w-5xl w-full">
         {/* Badge */}
         <div
