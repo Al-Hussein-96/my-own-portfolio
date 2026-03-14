@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #050608;
+  --surface: #101218;
+  --surface2: #151824;
+  --border: #1b1f2b;
+  --border2: #262b3a;
+  --text: #f3f4f6;
+  --muted: #9ca3b5;
+  --subtle: #6b7285;
+  --accent: #e0b973;
+  --accent-dim: rgba(224,185,115,0.12);
+  --accent-border: rgba(224,185,115,0.28);
+}
+
+@layer base {
+  body {
+    background: radial-gradient(140% 140% at 10% 0%, #101322 0%, #050608 55%, #050506 100%);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.03em;
+  }
+}
+
+@layer components {
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: border-color 0.2s;
+  }
+  .card:hover {
+    border-color: var(--border2);
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-semibold
+           transition-all duration-200 hover:-translate-y-0.5 active:scale-95;
+    background: var(--accent);
+    color: #0a0a0a;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium
+           transition-all duration-200 active:scale-95;
+    border: 1px solid var(--border2);
+    color: var(--text);
+  }
+  .btn-outline:hover { background: var(--surface2); border-color: var(--muted); }
+  .sec-label {
+    @apply text-xs font-semibold tracking-[0.25em] uppercase mb-3;
+    color: var(--accent);
+  }
+  .sec-title {
+    @apply font-syne text-4xl sm:text-5xl font-bold leading-tight mb-4;
+    color: var(--text);
+  }
+  .sec-sub {
+    @apply text-base leading-relaxed max-w-lg mb-14;
+    color: var(--muted);
+  }
+  .tag-accent {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    color: var(--accent);
+  }
+  .tag-default {
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    color: var(--muted);
+  }
+}
+
+.sec-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.04),
+    transparent
+  );
+  position: relative;
+  z-index: 1;
+}
+
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.3); border-radius: 2px; }
