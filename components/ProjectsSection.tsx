@@ -1,4 +1,4 @@
-import { projects, TagColor } from "@/data/portfolio";
+import { projects } from "@/data/portfolio";
 
 export default function ProjectsSection() {
   return (
@@ -17,20 +17,21 @@ export default function ProjectsSection() {
               {/* Visual */}
               <div
                 className="h-40 flex items-center justify-center relative overflow-hidden"
-                style={{ background: `linear-gradient(135deg, #111418, #0d1018)` }}
+                style={{ background: "linear-gradient(135deg, #111418, #0d1018)" }}
               >
                 <div
                   className="absolute inset-0 opacity-[0.04]"
                   style={{
-                    backgroundImage:
-                      "radial-gradient(circle at 1px 1px, #c8a96e 1px, transparent 0)",
+                    backgroundImage: "radial-gradient(circle at 1px 1px, #c8a96e 1px, transparent 0)",
                     backgroundSize: "28px 28px",
                   }}
                 />
                 <span className="text-5xl z-10">{p.icon}</span>
               </div>
 
+              {/* Body */}
               <div className="p-6">
+                {/* Stack tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {p.stack.map((t, i) => (
                     <span
@@ -55,36 +56,59 @@ export default function ProjectsSection() {
                   ))}
                 </div>
 
-                <h3 className="font-syne text-lg font-bold mb-1" style={{ color: "var(--text)" }}>
+                {/* Title */}
+                <h3
+                  className="font-syne text-lg font-bold mb-1"
+                  style={{ color: "var(--text)" }}
+                >
                   {p.title}
                 </h3>
-                <p className="text-xs mb-3" style={{ color: "var(--subtle)" }}>
+
+                {/* Subtitle */}
+                <p className="text-xs mb-1" style={{ color: "var(--subtle)" }}>
                   {p.subtitle}
                 </p>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--muted)" }}>
+
+                {/* Company */}
+                <p
+                  className="flex items-center gap-1.5 text-xs mb-4"
+                  style={{ color: "var(--muted)" }}
+                >
+                  <span>{p.company === "Personal" ? "👤" : "🏢"}</span>
+                  <span>{p.company}</span>
+                </p>
+
+                {/* Description */}
+                <p
+                  className="text-sm leading-relaxed mb-5"
+                  style={{ color: "var(--muted)" }}
+                >
                   {p.description}
                 </p>
 
-                <div className="flex gap-5">
-                  {p.github && (
-                    <a
-                      href={p.github}
-                      className="text-[13px] transition-opacity hover:opacity-70"
-                      style={{ color: "var(--accent)" }}
-                    >
-                      ↗ GitHub
-                    </a>
-                  )}
-                  {p.live && (
-                    <a
-                      href={p.live}
-                      className="text-[13px] transition-opacity hover:opacity-70"
-                      style={{ color: "var(--muted)" }}
-                    >
-                      ↗ Live Demo
-                    </a>
-                  )}
-                </div>
+                {/* Links */}
+                {(p.github || p.live) && (
+                  <div className="flex gap-5">
+                    {p.github && (
+                      <a
+                        href={p.github}
+                        className="text-[13px] transition-opacity hover:opacity-70"
+                        style={{ color: "var(--accent)" }}
+                      >
+                        ↗ GitHub
+                      </a>
+                    )}
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        className="text-[13px] transition-opacity hover:opacity-70"
+                        style={{ color: "var(--muted)" }}
+                      >
+                        ↗ Live Demo
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </article>
           ))}

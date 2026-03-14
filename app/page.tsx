@@ -20,8 +20,8 @@ export default function Home() {
       <Divider />
       <ProjectsSection />
       <Divider />
-      <AISection />
-      <Divider />
+      {/* <AISection />
+      <Divider /> */}
       <BlogSection />
       <Divider />
       <ContactSection />

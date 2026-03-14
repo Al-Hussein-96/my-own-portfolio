@@ -1,41 +1,40 @@
 export const skills = [
   // Mobile-focused skills
-  { name: "Android (Kotlin)",        icon: "🤖", level: "Expert",            pct: 100, cat: "mobile"   },
-  { name: "Kotlin Multiplatform",    icon: "🤖", level: "Expert",            pct: 100, cat: "mobile"   },
-  { name: "Kotlin Flow",             icon: "🌊", level: "Expert",          pct: 90,  cat: "mobile"   },
-  { name: "Coroutines",              icon: "⏱️", level: "Expert",          pct: 88,  cat: "mobile"   },
-  { name: "Hardware integration",    icon: "📡", level: "Expert",          pct: 90,  cat: "mobile"   },
-  { name: "Offline-first", icon: "📶", level: "Expert",       pct: 95,  cat: "mobile"   },
-  { name: "Optimization",            icon: "⚡", level: "Expert",          pct: 99,  cat: "mobile"   },
-  { name: "Security",                icon: "🔐", level: "Advanced",       pct: 99,  cat: "mobile"   },
-  { name: "Google Play",             icon: "🟢", level: "Expert",          pct: 90,  cat: "mobile"   },
-  { name: "App Store",               icon: "🔵", level: "Expert",          pct: 90,  cat: "mobile"   },
-  { name: "Firebase",                icon: "🔥", level: "Expert",          pct: 95,  cat: "mobile"   },
-  { name: "React Native",            icon: "📱", level: "Working Knowledge", pct: 60,  cat: "mobile"   },
-  { name: "Flutter",                 icon: "📱", level: "Working Knowledge", pct: 60,  cat: "mobile"   },
-  { name: "Expo",                    icon: "🚀", level: "Working Knowledge",          pct: 80,  cat: "mobile"   },
-  { name: "iOS Basics",              icon: "📱", level: "Familiar",          pct: 50,  cat: "mobile"   },
-
+  { name: "Android (Kotlin)",        icon: "🤖", level: "Expert",             pct: 100, cat: "mobile"   },
+  { name: "Kotlin Multiplatform",    icon: "🤖", level: "Expert",             pct: 100, cat: "mobile"   },
+  { name: "Kotlin Flow",             icon: "🌊", level: "Expert",             pct: 90,  cat: "mobile"   },
+  { name: "Coroutines",              icon: "⏱️", level: "Expert",             pct: 88,  cat: "mobile"   },
+  { name: "Hardware integration",    icon: "📡", level: "Expert",             pct: 90,  cat: "mobile"   },
+  { name: "Offline-first",           icon: "📶", level: "Expert",             pct: 95,  cat: "mobile"   },
+  { name: "Optimization",            icon: "⚡", level: "Expert",             pct: 99,  cat: "mobile"   },
+  { name: "Security",                icon: "🔐", level: "Advanced",           pct: 99,  cat: "mobile"   },
+  { name: "Google Play",             icon: "🟢", level: "Expert",             pct: 90,  cat: "mobile"   },
+  { name: "App Store",               icon: "🔵", level: "Expert",             pct: 90,  cat: "mobile"   },
+  { name: "Firebase",                icon: "🔥", level: "Expert",             pct: 95,  cat: "mobile"   },
+  { name: "React Native",            icon: "📱", level: "Working Knowledge",  pct: 60,  cat: "mobile"   },
+  { name: "Flutter",                 icon: "📱", level: "Working Knowledge",  pct: 60,  cat: "mobile"   },
+  { name: "Expo",                    icon: "🚀", level: "Working Knowledge",  pct: 80,  cat: "mobile"   },
+  { name: "iOS Basics",              icon: "📱", level: "Familiar",           pct: 50,  cat: "mobile"   },
 
   // Backend & platform
-  { name: "Kotlin",                  icon: "🔷", level: "Expert",            pct: 95,  cat: "backend"  },
-  { name: "Spring Boot",             icon: "🍃", level: "Advanced",          pct: 85,  cat: "backend"  },
-  { name: "Ktor",             icon: "🍃", level: "Advanced",          pct: 85,  cat: "backend"  },
-  { name: "Coroutines",              icon: "⏱️", level: "Expert",          pct: 88,  cat: "backend"   },
-  { name: "Java",                    icon: "☕", level: "Working Knowledge",          pct: 88,  cat: "backend"  },
-  { name: "PostgreSQL",              icon: "🐘", level: "Working Knowledge",          pct: 86,  cat: "backend"  },
+  { name: "Kotlin",                  icon: "🔷", level: "Expert",             pct: 95,  cat: "backend"  },
+  { name: "Spring Boot",             icon: "🍃", level: "Advanced",           pct: 85,  cat: "backend"  },
+  { name: "Ktor",                    icon: "🍃", level: "Advanced",           pct: 85,  cat: "backend"  },
+  { name: "Coroutines",              icon: "⏱️", level: "Expert",             pct: 88,  cat: "backend"  },
+  { name: "Java",                    icon: "☕", level: "Working Knowledge",  pct: 88,  cat: "backend"  },
+  { name: "PostgreSQL",              icon: "🐘", level: "Working Knowledge",  pct: 86,  cat: "backend"  },
 
   // DevOps & workflow
-  { name: "Docker",                  icon: "🐳", level: "Advanced",          pct: 84,  cat: "devops"   },
-  { name: "AWS",                  icon: "🐳", level: "Advanced",          pct: 84,  cat: "devops"   },
-  { name: "Git",                     icon: "🔀", level: "Expert",            pct: 93,  cat: "devops"   },
-  { name: "GitHub Actions",          icon: "⚙️", level: "Advanced",          pct: 82,  cat: "devops"   },
-  { name: "CI/CD",                   icon: "🔄", level: "Advanced",          pct: 80,  cat: "devops"   },
-  { name: "Agile",                   icon: "🏃", level: "Advanced",          pct: 85,  cat: "workflow" },
-  { name: "Scrum",                   icon: "📋", level: "Advanced",          pct: 83,  cat: "workflow" },
-  { name: "Jira",                    icon: "🎯", level: "Advanced",          pct: 82,  cat: "workflow" },
-  { name: "Notion",                    icon: "🎯", level: "Advanced",          pct: 82,  cat: "workflow" },
-  { name: "Slack",                    icon: "🎯", level: "Advanced",          pct: 82,  cat: "workflow" },
+  { name: "Docker",                  icon: "🐳", level: "Advanced",           pct: 84,  cat: "devops"   },
+  { name: "AWS",                     icon: "☁️", level: "Advanced",           pct: 84,  cat: "devops"   },
+  { name: "Git",                     icon: "🔀", level: "Expert",             pct: 93,  cat: "devops"   },
+  { name: "GitHub Actions",          icon: "⚙️", level: "Advanced",           pct: 82,  cat: "devops"   },
+  { name: "CI/CD",                   icon: "🔄", level: "Advanced",           pct: 80,  cat: "devops"   },
+  { name: "Agile",                   icon: "🏃", level: "Advanced",           pct: 85,  cat: "workflow" },
+  { name: "Scrum",                   icon: "📋", level: "Advanced",           pct: 83,  cat: "workflow" },
+  { name: "Jira",                    icon: "🎯", level: "Advanced",           pct: 82,  cat: "workflow" },
+  { name: "Notion",                  icon: "📝", level: "Advanced",           pct: 82,  cat: "workflow" },
+  { name: "Slack",                   icon: "💬", level: "Advanced",           pct: 82,  cat: "workflow" },
 ];
 
 export const skillCategories = [
@@ -46,47 +45,58 @@ export const skillCategories = [
   { key: "workflow", label: "Workflow" },
 ];
 
-export type TagColor = "purple" | "blue" | "pink";
+export type TagColor = "purple" | "blue" | "pink" | "orange";
 
-export const projects = [
+export type Project = {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  stack: string[];
+  stackColors: TagColor[];
+  icon: string;
+  gradient: string;
+  company: string;
+  github?: string;
+  live?: string;
+};
+
+export const projects: Project[] = [
   {
     id: "simpay",
-    title: "SimPay",
-    subtitle: "Payment Backend System",
+    title: "Simpay Backend",
+    subtitle: "Mobile Recharge & Agent Sales Platform",
     description:
-      "Reactive payment backend built with Spring Boot 4 + WebFlux. Handles transactions, agent management, and activity logging with JWT auth and full audit trails.",
-    stack: ["Kotlin", "Spring WebFlux", "R2DBC", "PostgreSQL"],
-    stackColors: ["purple", "blue", "blue", "pink"] as TagColor[],
+      "Reactive backend built with Kotlin, Spring Boot, WebFlux, and R2DBC. Handles agent management, SIM sales, recharges, and renewals with JWT authentication, full audit trails, and activity logging — designed for scalable, high-performance transactions.",
+    stack: ["Spring WebFlux", "R2DBC", "PostgreSQL", "Docker", "AWS"],
+    stackColors: ["purple", "blue", "blue", "pink", "orange"],
     icon: "💳",
     gradient: "from-violet-950 to-indigo-950",
-    github: "#",
-    live: "#",
+    company: "Simco Group of Companies",
   },
   {
     id: "simcoapp",
-    title: "SimcoApp",
+    title: "Simpay App",
     subtitle: "Cross-Platform Mobile App",
     description:
-      "Mobile app built in React Native / Expo with Firebase integration. Features iOS & Android builds, push notifications, and offline-first support.",
-    stack: ["React Native", "Expo", "Firebase", "TypeScript"],
-    stackColors: ["blue", "blue", "pink", "purple"] as TagColor[],
+      "Mobile app built in React Native / Expo. Features iOS & Android builds.",
+    stack: ["React Native", "Expo", "Firebase", "TypeScript", "EAS Build"],
+    stackColors: ["blue", "blue", "pink", "purple", "orange"],
     icon: "📱",
     gradient: "from-sky-950 to-cyan-950",
-    github: "#",
-    live: null,
+    company: "Simco Group of Companies",
   },
   {
     id: "admin",
     title: "Admin Dashboard",
-    subtitle: "Internal Management Panel",
+    subtitle: "Internal Management Panel for Simpay",
     description:
       "Full-featured admin panel for managing agents, regions, and transactions. Real-time charts and role-based access control.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
-    stackColors: ["purple", "blue", "pink", "blue"] as TagColor[],
+    stack: ["React.js", "TypeScript"],
+    stackColors: ["purple", "blue", "pink", "blue"],
     icon: "🖥️",
     gradient: "from-purple-950 to-violet-950",
-    github: "#",
-    live: "#",
+    company: "Simco Group of Companies",
   },
   {
     id: "auth",
@@ -95,11 +105,10 @@ export const projects = [
     description:
       "JWT-based authentication microservice with refresh tokens, reactive security context propagation, and granular permission scopes.",
     stack: ["Kotlin", "Spring Security", "Redis", "Docker"],
-    stackColors: ["purple", "pink", "pink", "blue"] as TagColor[],
+    stackColors: ["purple", "pink", "pink", "blue"],
     icon: "🔐",
     gradient: "from-slate-950 to-blue-950",
-    github: "#",
-    live: null,
+    company: "Simco Group of Companies",
   },
 ];
 
@@ -177,9 +186,10 @@ export const blogPosts = [
     url: "#",
   },
 ];
+
 export const contactLinks = [
-  { icon: "📧", label: "m.alhussein.96@gmail.com",            sub: "Email me anytime",      href: "mailto:m.alhussein.96@gmail.com" },
-  { icon: "💼", label: "linkedin.com/in/al-hussein96/",   sub: "Connect on LinkedIn",   href: "https://www.linkedin.com/in/al-hussein96/" },
-  { icon: "🐙", label: "github.com/Al-Hussein-96",        sub: "See my code",           href: "https://github.com/Al-Hussein-96" },
-  { icon: "✍️", label: "medium.com/@m.alhussein.96",       sub: "Read my articles",      href: "https://medium.com/@m.alhussein.96" },
+  { icon: "📧", label: "m.alhussein.96@gmail.com",          sub: "Email me anytime",    href: "mailto:m.alhussein.96@gmail.com" },
+  { icon: "💼", label: "linkedin.com/in/al-hussein96/",     sub: "Connect on LinkedIn", href: "https://www.linkedin.com/in/al-hussein96/" },
+  { icon: "🐙", label: "github.com/Al-Hussein-96",          sub: "See my code",         href: "https://github.com/Al-Hussein-96" },
+  { icon: "✍️", label: "medium.com/@m.alhussein.96",         sub: "Read my articles",    href: "https://medium.com/@m.alhussein.96" },
 ];
