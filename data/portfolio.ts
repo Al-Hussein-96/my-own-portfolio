@@ -110,12 +110,22 @@ export const projects: Project[] = [
     subtitle: "Platform for amateur football players.",
     description:
       "Full-featured admin panel for managing agents, regions, and transactions. Real-time charts and role-based access control.",
-      screenshotType: "desktop",
+      screenshotType: "mobile",
 
     stack: ["Kotlin", "Java", "Android", "MVVM", "Retrofit"],
     stackColors: ["purple", "blue", "pink", "blue"],
     icon: "📱",
-    images: [],
+    images: [
+      "CAP10/home.jpeg",
+      "CAP10/matches-result.jpeg",
+      "CAP10/match-summary.jpeg",
+      "CAP10/timeline.jpeg",
+      "CAP10/team-format.jpeg",
+      "CAP10/team-players.jpeg",
+      "CAP10/player-profile.jpeg",
+      "CAP10/standing.jpeg",
+      "CAP10/expectations.jpeg",
+    ],
     gradient: "from-purple-950 to-violet-950",
     company: "CAP10 Startup",
   },
@@ -139,12 +149,54 @@ export const projects: Project[] = [
     subtitle: "Mobile app for support team",
     description:
       "Open tickets, Site visits, Locations check-Ins.",
-      screenshotType: "desktop",
+      screenshotType: "mobile",
 
     stack: ["Kotlin Multiplatfor" , "Koin", "Ktor", "Jetpack Compose"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
-    images: [],
+    images: [
+
+    ],
+    gradient: "from-slate-950 to-blue-950",
+    company: "Axiom Telecom LLC",
+  },
+  {
+    id: "shopini",
+    title: "Shopini Logistics Handheld",
+    subtitle: "Mobile app for warehouse management",
+    description:
+      "Zebra device to manage shipments (Scanning, Printing)",
+      screenshotType: "mobile",
+
+    stack: ["Kotlin" , "RxJava", "Zebra SDK"],
+    stackColors: ["purple", "pink", "pink", "blue"],
+    icon: "📱",
+    images: [
+      "shopini-handheld/04-phone.png",
+      "shopini-handheld/03-phone.png",
+      "shopini-handheld/02-phone.png",
+      "shopini-handheld/01-phone.png",
+    ],
+    gradient: "from-slate-950 to-blue-950",
+    company: "Axiom Telecom LLC",
+  },
+  {
+    id: "shopini",
+    title: "Shopini Customers",
+    subtitle: "Mobile app for shipping",
+    description:
+      "Mobile app for tracking shipments for USA, UK, China, Turkey.",
+      screenshotType: "mobile",
+
+    stack: ["Kotlin" , "Navigation", "Koltin Flow"],
+    stackColors: ["purple", "pink", "pink", "blue"],
+    icon: "📱",
+    images: [
+      "shopini-customer/login.png",
+      "shopini-customer/home.png",
+      "shopini-customer/calculator.png",
+      "shopini-customer/shipping.png",
+    ],
     gradient: "from-slate-950 to-blue-950",
     company: "Axiom Telecom LLC",
   },
