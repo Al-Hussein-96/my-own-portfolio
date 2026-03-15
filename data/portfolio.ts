@@ -125,6 +125,7 @@ export const projects: Project[] = [
     subtitle: "POS App for recharge and vouchers.",
     description:
       "POS & Mobile app for transactions (DuPay, ePin, Google play, Itunes, Du, Salik)",
+      screenshotType: "desktop",
     stack: ["Kotlin", "Ktor", "Offline-first", "WorkManager", "Performance"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
