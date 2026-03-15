@@ -51,9 +51,11 @@ export type Project = {
   title: string;
   subtitle: string;
   description: string;
+  screenshotType: "desktop" | "mobile";  // NEW
   stack: string[];
   stackColors: TagColor[];
   icon: string;
+  images: string[];
   gradient: string;
   company: string;
   github?: string;
@@ -67,9 +69,15 @@ export const projects: Project[] = [
     subtitle: "Mobile Recharge & Agent Sales Platform",
     description:
       "Reactive backend built with Kotlin, Spring Boot, WebFlux, and R2DBC. Handles agent management, SIM sales, recharges, and renewals with JWT authentication, full audit trails, and activity logging — designed for scalable, high-performance transactions.",
-    stack: ["Spring WebFlux", "R2DBC", "PostgreSQL", "Docker", "AWS"],
+   screenshotType: "desktop",
+      stack: ["Spring WebFlux", "R2DBC", "PostgreSQL", "Docker", "AWS"],
     stackColors: ["purple", "blue", "blue", "pink", "orange"],
     icon: "💳",
+    images: [
+      "simpay-admin/login.png",
+      "simpay-admin/packages.png",
+      "simpay-admin/transactions.png",
+    ],
     gradient: "from-violet-950 to-indigo-950",
     company: "Simco Group of Companies",
   },
@@ -79,9 +87,20 @@ export const projects: Project[] = [
     subtitle: "Cross-Platform Mobile App",
     description:
       "Mobile app built in React Native / Expo. Features iOS & Android builds.",
+      screenshotType: "mobile",
+
     stack: ["React Native", "Expo", "Firebase", "TypeScript", "EAS Build"],
     stackColors: ["blue", "blue", "pink", "purple", "orange"],
     icon: "📱",
+    images: [
+      "simpay-app/login.png",
+      "simpay-app/home.png",
+      "simpay-app/recharge.png",
+      "simpay-app/transactions.png",
+      "simpay-app/reports.png",
+
+    ],
+
     gradient: "from-sky-950 to-cyan-950",
     company: "Simco Group of Companies",
   },
@@ -91,9 +110,12 @@ export const projects: Project[] = [
     subtitle: "Platform for amateur football players.",
     description:
       "Full-featured admin panel for managing agents, regions, and transactions. Real-time charts and role-based access control.",
+      screenshotType: "desktop",
+
     stack: ["Kotlin", "Java", "Android", "MVVM", "Retrofit"],
     stackColors: ["purple", "blue", "pink", "blue"],
     icon: "📱",
+    images: [],
     gradient: "from-purple-950 to-violet-950",
     company: "CAP10 Startup",
   },
@@ -106,6 +128,7 @@ export const projects: Project[] = [
     stack: ["Kotlin", "Ktor", "Offline-first", "WorkManager", "Performance"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
+    images: [],
     gradient: "from-slate-950 to-blue-950",
     company: "Axiom Telecom LLC",
   },
@@ -115,9 +138,12 @@ export const projects: Project[] = [
     subtitle: "Mobile app for support team",
     description:
       "Open tickets, Site visits, Locations check-Ins.",
+      screenshotType: "desktop",
+
     stack: ["Kotlin Multiplatfor" , "Koin", "Ktor", "Jetpack Compose"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
+    images: [],
     gradient: "from-slate-950 to-blue-950",
     company: "Axiom Telecom LLC",
   },
@@ -127,9 +153,12 @@ export const projects: Project[] = [
     subtitle: "Custom App for MDM management on POS",
     description:
       "MDM, Lock/Unlock, Kiosk Mode, Push notifications",
+      screenshotType: "desktop",
+
     stack: ["Kotlin" , "Device Owner", "Sunmi", "Mobiwire SDK", "Printers"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
+    images: [],
     gradient: "from-slate-950 to-blue-950",
     company: "Axiom Telecom LLC",
   },
