@@ -135,11 +135,21 @@ export const projects: Project[] = [
     subtitle: "POS App for recharge and vouchers.",
     description:
       "POS & Mobile app for transactions (DuPay, ePin, Google play, Itunes, Du, Salik)",
-      screenshotType: "desktop",
+      screenshotType: "mobile",
     stack: ["Kotlin", "Ktor", "Offline-first", "WorkManager", "Performance"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
-    images: [],
+    images: [
+      "axiom-topup/category products.jpeg",
+      "axiom-topup/login.jpeg",
+      "axiom-topup/salik products.jpeg",
+      "axiom-topup/successful result.jpeg",
+      "axiom-topup/reports.jpeg",
+      "axiom-topup/salik products.jpeg",
+      "axiom-topup/du pay topup.jpeg",
+      "axiom-topup/history.jpeg",
+
+    ],
     gradient: "from-slate-950 to-blue-950",
     company: "Axiom Telecom LLC",
   },
