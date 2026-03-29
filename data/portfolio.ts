@@ -1,46 +1,46 @@
 export const skills = [
   // Mobile-focused skills
-  { name: "Android (Kotlin)",        icon: "🤖", level: "Expert",             pct: 100, cat: "mobile"   },
-  { name: "Kotlin Multiplatform",    icon: "🤖", level: "Expert",             pct: 100, cat: "mobile"   },
-  { name: "Kotlin Flow",             icon: "🌊", level: "Expert",             pct: 90,  cat: "mobile"   },
-  { name: "Coroutines",              icon: "⏱️", level: "Expert",             pct: 88,  cat: "mobile"   },
-  { name: "Hardware integration",    icon: "📡", level: "Expert",             pct: 90,  cat: "mobile"   },
-  { name: "Offline-first",           icon: "📶", level: "Expert",             pct: 95,  cat: "mobile"   },
-  { name: "Optimization",            icon: "⚡", level: "Expert",             pct: 99,  cat: "mobile"   },
-  { name: "Security",                icon: "🔐", level: "Advanced",           pct: 99,  cat: "mobile"   },
-  { name: "Google Play",             icon: "🟢", level: "Expert",             pct: 90,  cat: "mobile"   },
-  { name: "App Store",               icon: "🔵", level: "Expert",             pct: 90,  cat: "mobile"   },
-  { name: "Firebase",                icon: "🔥", level: "Expert",             pct: 95,  cat: "mobile"   },
-  { name: "React Native",            icon: "📱", level: "Working Knowledge",  pct: 60,  cat: "mobile"   },
-  { name: "Flutter",                 icon: "📱", level: "Working Knowledge",  pct: 60,  cat: "mobile"   },
-  { name: "Expo",                    icon: "🚀", level: "Working Knowledge",  pct: 80,  cat: "mobile"   },
-  { name: "iOS Basics",              icon: "📱", level: "Familiar",           pct: 50,  cat: "mobile"   },
+  { name: "Android (Kotlin)", icon: "🤖", level: "Expert", pct: 100, cat: "mobile" },
+  { name: "Kotlin Multiplatform", icon: "🤖", level: "Expert", pct: 100, cat: "mobile" },
+  { name: "Kotlin Flow", icon: "🌊", level: "Expert", pct: 90, cat: "mobile" },
+  { name: "Coroutines", icon: "⏱️", level: "Expert", pct: 88, cat: "mobile" },
+  { name: "Hardware integration", icon: "📡", level: "Expert", pct: 90, cat: "mobile" },
+  { name: "Offline-first", icon: "📶", level: "Expert", pct: 95, cat: "mobile" },
+  { name: "Optimization", icon: "⚡", level: "Expert", pct: 99, cat: "mobile" },
+  { name: "Security", icon: "🔐", level: "Advanced", pct: 99, cat: "mobile" },
+  { name: "Google Play", icon: "🟢", level: "Expert", pct: 90, cat: "mobile" },
+  { name: "App Store", icon: "🔵", level: "Expert", pct: 90, cat: "mobile" },
+  { name: "Firebase", icon: "🔥", level: "Expert", pct: 95, cat: "mobile" },
+  { name: "React Native", icon: "📱", level: "Working Knowledge", pct: 60, cat: "mobile" },
+  { name: "Flutter", icon: "📱", level: "Working Knowledge", pct: 60, cat: "mobile" },
+  { name: "Expo", icon: "🚀", level: "Working Knowledge", pct: 80, cat: "mobile" },
+  { name: "iOS Basics", icon: "📱", level: "Familiar", pct: 50, cat: "mobile" },
 
   // Backend & platform
-  { name: "Kotlin",                  icon: "🔷", level: "Expert",             pct: 95,  cat: "backend"  },
-  { name: "Spring Boot",             icon: "🍃", level: "Advanced",           pct: 85,  cat: "backend"  },
-  { name: "Ktor",                    icon: "🍃", level: "Advanced",           pct: 85,  cat: "backend"  },
-  { name: "Coroutines",              icon: "⏱️", level: "Expert",             pct: 88,  cat: "backend"  },
-  { name: "Java",                    icon: "☕", level: "Working Knowledge",  pct: 88,  cat: "backend"  },
-  { name: "PostgreSQL",              icon: "🐘", level: "Working Knowledge",  pct: 86,  cat: "backend"  },
+  { name: "Kotlin", icon: "🔷", level: "Expert", pct: 95, cat: "backend" },
+  { name: "Spring Boot", icon: "🍃", level: "Advanced", pct: 85, cat: "backend" },
+  { name: "Ktor", icon: "🍃", level: "Advanced", pct: 85, cat: "backend" },
+  { name: "Coroutines", icon: "⏱️", level: "Expert", pct: 88, cat: "backend" },
+  { name: "Java", icon: "☕", level: "Working Knowledge", pct: 88, cat: "backend" },
+  { name: "PostgreSQL", icon: "🐘", level: "Working Knowledge", pct: 86, cat: "backend" },
 
   // DevOps & workflow
-  { name: "Docker",                  icon: "🐳", level: "Advanced",           pct: 84,  cat: "devops"   },
-  { name: "AWS",                     icon: "☁️", level: "Advanced",           pct: 84,  cat: "devops"   },
-  { name: "Git",                     icon: "🔀", level: "Expert",             pct: 93,  cat: "devops"   },
-  { name: "GitHub Actions",          icon: "⚙️", level: "Advanced",           pct: 82,  cat: "devops"   },
-  { name: "CI/CD",                   icon: "🔄", level: "Advanced",           pct: 80,  cat: "devops"   },
-  { name: "Agile",                   icon: "🏃", level: "Advanced",           pct: 85,  cat: "workflow" },
-  { name: "Scrum",                   icon: "📋", level: "Advanced",           pct: 83,  cat: "workflow" },
-  { name: "Jira",                    icon: "🎯", level: "Advanced",           pct: 82,  cat: "workflow" },
-  { name: "Notion",                  icon: "📝", level: "Advanced",           pct: 82,  cat: "workflow" },
+  { name: "Docker", icon: "🐳", level: "Advanced", pct: 84, cat: "devops" },
+  { name: "AWS", icon: "☁️", level: "Advanced", pct: 84, cat: "devops" },
+  { name: "Git", icon: "🔀", level: "Expert", pct: 93, cat: "devops" },
+  { name: "GitHub Actions", icon: "⚙️", level: "Advanced", pct: 82, cat: "devops" },
+  { name: "CI/CD", icon: "🔄", level: "Advanced", pct: 80, cat: "devops" },
+  { name: "Agile", icon: "🏃", level: "Advanced", pct: 85, cat: "workflow" },
+  { name: "Scrum", icon: "📋", level: "Advanced", pct: 83, cat: "workflow" },
+  { name: "Jira", icon: "🎯", level: "Advanced", pct: 82, cat: "workflow" },
+  { name: "Notion", icon: "📝", level: "Advanced", pct: 82, cat: "workflow" },
 ];
 
 export const skillCategories = [
-  { key: "all",      label: "All"      },
-  { key: "mobile",   label: "Mobile"   },
-  { key: "backend",  label: "Backend"  },
-  { key: "devops",   label: "DevOps"   },
+  { key: "all", label: "All" },
+  { key: "mobile", label: "Mobile" },
+  { key: "backend", label: "Backend" },
+  { key: "devops", label: "DevOps" },
   { key: "workflow", label: "Workflow" },
 ];
 
@@ -69,8 +69,8 @@ export const projects: Project[] = [
     subtitle: "Mobile Recharge & Agent Sales Platform",
     description:
       "Reactive backend built with Kotlin, Spring Boot, WebFlux, and R2DBC. Handles agent management, SIM sales, recharges, and renewals with JWT authentication, full audit trails, and activity logging — designed for scalable, high-performance transactions.",
-   screenshotType: "desktop",
-      stack: ["Spring WebFlux", "R2DBC", "PostgreSQL", "Docker", "AWS"],
+    screenshotType: "desktop",
+    stack: ["Spring WebFlux", "R2DBC", "PostgreSQL", "Docker", "AWS"],
     stackColors: ["purple", "blue", "blue", "pink", "orange"],
     icon: "💳",
     images: [
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     subtitle: "Cross-Platform Mobile App",
     description:
       "Mobile app built in React Native / Expo. Features iOS & Android builds.",
-      screenshotType: "mobile",
+    screenshotType: "mobile",
 
     stack: ["React Native", "Expo", "Firebase", "TypeScript", "EAS Build"],
     stackColors: ["blue", "blue", "pink", "purple", "orange"],
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     subtitle: "Platform for amateur football players.",
     description:
       "Full-featured admin panel for managing agents, regions, and transactions. Real-time charts and role-based access control.",
-      screenshotType: "mobile",
+    screenshotType: "mobile",
 
     stack: ["Kotlin", "Java", "Android", "MVVM", "Retrofit"],
     stackColors: ["purple", "blue", "pink", "blue"],
@@ -135,7 +135,7 @@ export const projects: Project[] = [
     subtitle: "POS App for recharge and vouchers.",
     description:
       "POS & Mobile app for transactions (DuPay, ePin, Google play, Itunes, Du, Salik)",
-      screenshotType: "mobile",
+    screenshotType: "mobile",
     stack: ["Kotlin", "Ktor", "Offline-first", "WorkManager", "Performance"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
@@ -154,18 +154,47 @@ export const projects: Project[] = [
     company: "Axiom Telecom LLC",
   },
   {
+    id: "fbs",
+    title: "Fuel Busniess Suite",
+    subtitle: "Mobile app for fuel",
+    description:
+      "Fuel orders, payment solutions",
+    screenshotType: "mobile",
+
+    stack: ["Flutter", "Clean Architecture", "Payment"],
+    stackColors: ["purple", "pink", "pink", "blue"],
+    icon: "📱",
+    images: [
+      "FBS-pay/home.jpeg",
+      "FBS-pay/fleet-card.jpeg",
+      "FBS-pay/topup.jpeg",
+      "FBS-pay/wallet.jpeg",
+      "FBS-pay/market tires.jpeg",
+      "FBS-pay/car.jpeg",
+      "FBS-pay/order.jpeg",
+      "FBS-pay/map.jpeg",
+
+    ],
+    gradient: "from-slate-950 to-blue-950",
+    company: "Axiom Telecom LLC",
+  },
+  {
     id: "Support",
     title: "Support Tracking App",
     subtitle: "Mobile app for support team",
     description:
       "Open tickets, Site visits, Locations check-Ins.",
-      screenshotType: "mobile",
+    screenshotType: "mobile",
 
-    stack: ["Kotlin Multiplatfor" , "Koin", "Ktor", "Jetpack Compose"],
+    stack: ["Kotlin Multiplatform", "KMP", "Koin", "Ktor", "Jetpack Compose"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
     images: [
-
+      "axiom-support/login.jpeg",
+      "axiom-support/home.jpeg",
+      "axiom-support/summary.jpeg",
+      "axiom-support/add-site-visit.jpeg",
+      "axiom-support/close-site-visit.jpeg",
     ],
     gradient: "from-slate-950 to-blue-950",
     company: "Axiom Telecom LLC",
@@ -176,9 +205,9 @@ export const projects: Project[] = [
     subtitle: "Mobile app for warehouse management",
     description:
       "Zebra device to manage shipments (Scanning, Printing)",
-      screenshotType: "mobile",
+    screenshotType: "mobile",
 
-    stack: ["Kotlin" , "RxJava", "Zebra SDK"],
+    stack: ["Kotlin", "RxJava", "Zebra SDK"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
     images: [
@@ -196,9 +225,9 @@ export const projects: Project[] = [
     subtitle: "Mobile app for shipping",
     description:
       "Mobile app for tracking shipments for USA, UK, China, Turkey.",
-      screenshotType: "mobile",
+    screenshotType: "mobile",
 
-    stack: ["Kotlin" , "Navigation", "Koltin Flow"],
+    stack: ["Kotlin", "Navigation", "Koltin Flow"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
     images: [
@@ -216,9 +245,9 @@ export const projects: Project[] = [
     subtitle: "Custom App for MDM management on POS",
     description:
       "MDM, Lock/Unlock, Kiosk Mode, Push notifications",
-      screenshotType: "desktop",
+    screenshotType: "desktop",
 
-    stack: ["Kotlin" , "Device Owner", "Sunmi", "Mobiwire SDK", "Printers"],
+    stack: ["Kotlin", "Device Owner", "Sunmi", "Mobiwire SDK", "Printers"],
     stackColors: ["purple", "pink", "pink", "blue"],
     icon: "📱",
     images: [],
@@ -279,8 +308,8 @@ export const blogPosts = [
 ];
 
 export const contactLinks = [
-  { icon: "📧", label: "m.alhussein.96@gmail.com",          sub: "Email me anytime",    href: "mailto:m.alhussein.96@gmail.com" },
-  { icon: "💼", label: "linkedin.com/in/al-hussein96/",     sub: "Connect on LinkedIn", href: "https://www.linkedin.com/in/al-hussein96/" },
-  { icon: "🐙", label: "github.com/Al-Hussein-96",          sub: "See my code",         href: "https://github.com/Al-Hussein-96" },
-  { icon: "✍️", label: "medium.com/@m.alhussein.96",         sub: "Read my articles",    href: "https://medium.com/@m.alhussein.96" },
+  { icon: "📧", label: "m.alhussein.96@gmail.com", sub: "Email me anytime", href: "mailto:m.alhussein.96@gmail.com" },
+  { icon: "💼", label: "linkedin.com/in/al-hussein96/", sub: "Connect on LinkedIn", href: "https://www.linkedin.com/in/al-hussein96/" },
+  { icon: "🐙", label: "github.com/Al-Hussein-96", sub: "See my code", href: "https://github.com/Al-Hussein-96" },
+  { icon: "✍️", label: "medium.com/@m.alhussein.96", sub: "Read my articles", href: "https://medium.com/@m.alhussein.96" },
 ];
