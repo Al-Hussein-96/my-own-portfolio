@@ -34,6 +34,8 @@ interface Row {
   jerseyNumber: string;
   phoneNumber: string;
   status: "idle" | "saving" | "saved" | "error";
+  /** The server's own words for why this row was refused. */
+  error?: string;
 }
 
 const MESSAGES = {
@@ -62,6 +64,9 @@ const MESSAGES = {
     onlyNSpots: (n: number) => `Only ${n} spot${n === 1 ? "" : "s"} remaining.`,
     someFailed: (n: number) => `${n} player${n === 1 ? "" : "s"} failed to save — fix and submit again.`,
     openInApp: "Open in the LigaTech app",
+    getOnPlay: "Get the app on Google Play",
+    getOnAppStore: "Download the app on the App Store",
+    badJersey: "Shirt number must be between 1 and 99.",
     poweredBy: "Powered by LigaTech · This link was shared by your team's organizer",
     toggle: "العربية",
   },
@@ -90,6 +95,9 @@ const MESSAGES = {
     onlyNSpots: (n: number) => `${n} مقاعد متبقية فقط.`,
     someFailed: (n: number) => `فشل حفظ ${n} لاعبين — صحّح وأعد الإرسال.`,
     openInApp: "افتح في تطبيق LigaTech",
+    getOnPlay: "حمّل التطبيق من Google Play",
+    getOnAppStore: "حمّل التطبيق من App Store",
+    badJersey: "يجب أن يكون رقم القميص بين 1 و99.",
     poweredBy: "مدعوم من LigaTech · شارك منظم فريقك هذا الرابط",
     toggle: "English",
   },
@@ -103,6 +111,12 @@ function normalizePhone(value: string): string | null {
 
 let nextId = 1;
 const newRow = (): Row => ({ id: nextId++, fullName: "", jerseyNumber: "", phoneNumber: "", status: "idle" });
+
+const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.alhussain.ligatech";
+// Empty until the app ships on the App Store — the iOS badge stays hidden so
+// the page never links to a listing that does not exist. Fill in
+// https://apps.apple.com/app/id<APPLE_ID> when it goes live.
+const APP_STORE_URL = "";
 
 export default function JoinClient({ inviteToken }: { inviteToken: string }) {
   const [locale, setLocale] = useState<"en" | "ar">("en");
@@ -118,8 +132,16 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
   const [allSaved, setAllSaved] = useState(false);
   const [banner, setBanner] = useState<string | null>(null);
 
+  // Which store badge to show. UA sniffing is fine here: getting it wrong
+  // just shows the other store's badge, and desktop shows whatever exists.
+  const [platform, setPlatform] = useState<"android" | "ios" | "other">("other");
+
   useEffect(() => {
-    if (typeof navigator !== "undefined" && navigator.language?.startsWith("ar")) setLocale("ar");
+    if (typeof navigator === "undefined") return;
+    if (navigator.language?.startsWith("ar")) setLocale("ar");
+    const ua = navigator.userAgent;
+    if (/android/i.test(ua)) setPlatform("android");
+    else if (/iPhone|iPad|iPod/i.test(ua)) setPlatform("ios");
   }, []);
 
   useEffect(() => {
@@ -141,7 +163,9 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
   const deepLink = `ligatech://join/${inviteToken}`;
 
   const updateRow = (id: number, patch: Partial<Row>) =>
-    setRows((prev) => prev.map((r) => (r.id === id ? { ...r, ...patch, status: "idle" } : r)));
+    setRows((prev) =>
+      prev.map((r) => (r.id === id ? { ...r, ...patch, status: "idle", error: undefined } : r))
+    );
 
   const addRow = () => {
     if (!team) return;
@@ -165,6 +189,21 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
     if (pending.length === 0) return setBanner(t.atLeastOne);
     if (pending.length > spotsLeft) return setBanner(t.onlyNSpots(spotsLeft));
 
+    // The server rejects a jersey outside 1–99; catching it here keeps the
+    // row editable with a message in the user's language instead of a
+    // round-trip that comes back in English.
+    const badJersey = pending.find((r) => {
+      if (!r.jerseyNumber) return false;
+      const n = Number(r.jerseyNumber);
+      return !Number.isInteger(n) || n < 1 || n > 99;
+    });
+    if (badJersey) {
+      setRows((prev) =>
+        prev.map((r) => (r.id === badJersey.id ? { ...r, status: "error", error: t.badJersey } : r))
+      );
+      return setBanner(t.badJersey);
+    }
+
     setSubmitting(true);
     setRows((prev) => prev.map((r) => (pending.some((p) => p.id === r.id) ? { ...r, status: "saving" } : r)));
 
@@ -179,10 +218,22 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
             phoneNumber: normalizePhone(row.phoneNumber),
           }),
         });
-        if (!res.ok) throw new Error(String(res.status));
+        if (!res.ok) {
+          // The backend answers validation failures with a human-readable
+          // message ("phoneNumber: Invalid phone number format") — show that
+          // on the row rather than a generic count.
+          const detail = await res
+            .json()
+            .then((b: { message?: string }) => b?.message)
+            .catch(() => undefined);
+          setRows((prev) =>
+            prev.map((r) => (r.id === row.id ? { ...r, status: "error", error: detail } : r))
+          );
+          throw new Error(detail ?? String(res.status));
+        }
         const player: Player = await res.json();
         setExisting((prev) => [...prev, player]);
-        setRows((prev) => prev.map((r) => (r.id === row.id ? { ...r, status: "saved" } : r)));
+        setRows((prev) => prev.map((r) => (r.id === row.id ? { ...r, status: "saved", error: undefined } : r)));
       })
     );
 
@@ -191,9 +242,6 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
     if (failed === 0) {
       setAllSaved(true);
     } else {
-      setRows((prev) =>
-        prev.map((r) => (r.status === "saving" ? { ...r, status: "error" } : r))
-      );
       setBanner(t.someFailed(failed));
     }
   };
@@ -241,11 +289,35 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
       {/* Escape hatch for in-app browsers that swallow App/Universal Links. */}
       <a
         href={deepLink}
-        className="w-full flex items-center justify-center gap-2 py-2.5 mb-8 text-sm font-medium rounded-lg border transition-colors"
+        className="w-full flex items-center justify-center gap-2 py-2.5 mb-2 text-sm font-medium rounded-lg border transition-colors"
         style={{ borderColor: "var(--border2)", color: "var(--muted)", background: "var(--surface)" }}
       >
         📱 {t.openInApp}
       </a>
+
+      {/* The store badge for whoever landed here WITHOUT the app — the OS only
+          shows this page when the app did not intercept the link. Platform-
+          matched; desktop gets every store that exists. */}
+      <div className="mb-8 space-y-2">
+        {platform !== "ios" && (
+          <a
+            href={PLAY_STORE_URL}
+            className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold rounded-lg"
+            style={{ background: "var(--surface2)", color: "#21c25e", border: "1px solid var(--border2)" }}
+          >
+            ▶ {t.getOnPlay}
+          </a>
+        )}
+        {platform !== "android" && APP_STORE_URL && (
+          <a
+            href={APP_STORE_URL}
+            className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold rounded-lg"
+            style={{ background: "var(--surface2)", color: "#21c25e", border: "1px solid var(--border2)" }}
+          >
+             {t.getOnAppStore}
+          </a>
+        )}
+      </div>
 
       <div className="text-center mb-8">
         <div
@@ -330,6 +402,9 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
               </button>
             )}
             {row.status === "saved" && <p className="text-xs" style={{ color: "#21c25e" }}>✓</p>}
+            {row.status === "error" && row.error && (
+              <p className="text-xs" style={{ color: "#e5484d" }}>{row.error}</p>
+            )}
           </div>
         ))}
       </div>
