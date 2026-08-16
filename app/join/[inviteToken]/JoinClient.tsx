@@ -67,6 +67,9 @@ const MESSAGES = {
     getOnPlay: "Get the app on Google Play",
     getOnAppStore: "Download the app on the App Store",
     badJersey: "Shirt number must be between 1 and 99.",
+    addLogo: "Add team logo",
+    changeLogo: "Change team logo",
+    logoTooBig: "The image must be 5MB or smaller.",
     poweredBy: "Powered by LigaTech · This link was shared by your team's organizer",
     toggle: "العربية",
   },
@@ -98,6 +101,9 @@ const MESSAGES = {
     getOnPlay: "حمّل التطبيق من Google Play",
     getOnAppStore: "حمّل التطبيق من App Store",
     badJersey: "يجب أن يكون رقم القميص بين 1 و99.",
+    addLogo: "أضف شعار الفريق",
+    changeLogo: "غيّر شعار الفريق",
+    logoTooBig: "يجب ألا يتجاوز حجم الصورة 5 ميغابايت.",
     poweredBy: "مدعوم من LigaTech · شارك منظم فريقك هذا الرابط",
     toggle: "English",
   },
@@ -113,6 +119,18 @@ let nextId = 1;
 const newRow = (): Row => ({ id: nextId++, fullName: "", jerseyNumber: "", phoneNumber: "", status: "idle" });
 
 const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.alhussain.ligatech";
+
+// Where uploaded images are served from. The backend names its own host in
+// logoUrl (sometimes "localhost"), so only the path is trusted and re-based —
+// the same rule the mobile app's absoluteMediaUrl applies.
+const MEDIA_ORIGIN = "https://ligatech-api.mohammadalhussain.com";
+function mediaUrl(url: string): string {
+  const schemeAt = url.indexOf("://");
+  const path = schemeAt < 0 ? url : url.slice(url.indexOf("/", schemeAt + 3));
+  return `${MEDIA_ORIGIN}/${path.replace(/^\//, "")}`;
+}
+
+const MAX_LOGO_BYTES = 5 * 1024 * 1024;
 // Empty until the app ships on the App Store — the iOS badge stays hidden so
 // the page never links to a listing that does not exist. Fill in
 // https://apps.apple.com/app/id<APPLE_ID> when it goes live.
@@ -131,6 +149,7 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
   const [submitting, setSubmitting] = useState(false);
   const [allSaved, setAllSaved] = useState(false);
   const [banner, setBanner] = useState<string | null>(null);
+  const [logoBusy, setLogoBusy] = useState(false);
 
   // Which store badge to show. UA sniffing is fine here: getting it wrong
   // just shows the other store's badge, and desktop shows whatever exists.
@@ -161,6 +180,27 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
   const isLocked = team?.leagueStatus === "Active" || team?.leagueStatus === "Completed";
   const filledCount = useMemo(() => rows.filter((r) => r.fullName.trim() && r.status !== "saved").length, [rows]);
   const deepLink = `ligatech://join/${inviteToken}`;
+
+  const uploadLogo = async (file: File) => {
+    if (!team || logoBusy) return;
+    if (file.size > MAX_LOGO_BYTES) return setBanner(t.logoTooBig);
+    setLogoBusy(true);
+    setBanner(null);
+    try {
+      const form = new FormData();
+      form.append("file", file);
+      const res = await fetch(`/api/v1/teams/join/${inviteToken}/logo`, { method: "POST", body: form });
+      if (!res.ok) {
+        const detail = await res.json().then((b: { message?: string }) => b?.message).catch(() => undefined);
+        setBanner(detail ?? `${res.status}`);
+      } else {
+        const updated: { logoUrl: string | null } = await res.json();
+        setTeam({ ...team, logoUrl: updated.logoUrl });
+      }
+    } finally {
+      setLogoBusy(false);
+    }
+  };
 
   const updateRow = (id: number, patch: Partial<Row>) =>
     setRows((prev) =>
@@ -320,12 +360,44 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
       </div>
 
       <div className="text-center mb-8">
-        <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 font-bold text-lg"
-          style={{ background: "linear-gradient(135deg,#21c25e,#087443)", color: "#fff" }}
-        >
-          {team.teamName.slice(0, 2).toUpperCase()}
-        </div>
+        {/* The badge doubles as the logo upload target; the token authorizes
+            the write, same as adding players. */}
+        <label className="cursor-pointer inline-block">
+          <input
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            className="hidden"
+            disabled={logoBusy}
+            onChange={(e) => {
+              const f = e.target.files?.[0];
+              e.target.value = "";
+              if (f) uploadLogo(f);
+            }}
+          />
+          {team.logoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={mediaUrl(team.logoUrl)}
+              alt={team.teamName}
+              className="w-14 h-14 rounded-xl object-contain mx-auto mb-2"
+              style={{ background: "var(--surface)", opacity: logoBusy ? 0.5 : 1 }}
+            />
+          ) : (
+            <div
+              className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-2 font-bold text-lg"
+              style={{
+                background: "linear-gradient(135deg,#21c25e,#087443)",
+                color: "#fff",
+                opacity: logoBusy ? 0.5 : 1,
+              }}
+            >
+              {team.teamName.slice(0, 2).toUpperCase()}
+            </div>
+          )}
+          <span className="block text-xs mb-3" style={{ color: "var(--muted)" }}>
+            {logoBusy ? "…" : team.logoUrl ? t.changeLogo : t.addLogo}
+          </span>
+        </label>
         <h1 className="text-2xl font-semibold mb-1" style={{ color: "var(--text)" }}>{t.addPlayers}</h1>
         <p className="text-sm" style={{ color: "var(--muted)" }}>
           {t.addingTo} <strong style={{ color: "var(--text)" }}>{team.teamName}</strong> · {team.leagueName}
