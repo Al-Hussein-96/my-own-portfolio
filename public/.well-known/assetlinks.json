@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.alhussain.ligatech",
+      "sha256_cert_fingerprints": [
+        "4D:AD:91:50:C0:B9:E9:6E:50:CD:59:A0:A2:89:FA:E3:EE:AB:16:D3:AF:E0:A7:0D:62:36:E4:4F:01:5F:61:58",
+        "90:5C:E1:47:9D:C8:D5:54:14:DB:E5:19:14:44:72:49:FC:86:BB:53:92:0C:C6:F3:C7:AD:CA:D0:E8:18:65:87"
+      ]
+    }
+  }
+]
