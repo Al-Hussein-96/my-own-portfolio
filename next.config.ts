@@ -1,18 +1,10 @@
 import type { NextConfig } from "next";
 
-// The LigaTech backend. The /join page calls it through this same-origin
-// rewrite so the browser never needs CORS on the API.
-const LIGATECH_API = "https://ligatech-api.mohammadalhussain.com";
+// The LigaTech backend is reached through app/api/v1/[...path]/route.ts, not
+// a rewrite: a rewrite forwards the browser's Origin header and the backend's
+// CORS filter answers it with 403. The route handler strips it.
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/api/v1/:path*",
-        destination: `${LIGATECH_API}/api/v1/:path*`,
-      },
-    ];
-  },
   async headers() {
     return [
       {
