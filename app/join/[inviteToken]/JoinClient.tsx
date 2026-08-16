@@ -360,8 +360,9 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
       </div>
 
       <div className="text-center mb-8">
-        {/* The badge doubles as the logo upload target; the token authorizes
-            the write, same as adding players. */}
+        {/* The badge is a big tappable upload target, and the button below
+            spells the action out — the token authorizes the write, same as
+            adding players. */}
         <label className="cursor-pointer inline-block">
           <input
             type="file"
@@ -379,12 +380,12 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
             <img
               src={mediaUrl(team.logoUrl)}
               alt={team.teamName}
-              className="w-14 h-14 rounded-xl object-contain mx-auto mb-2"
+              className="w-24 h-24 rounded-2xl object-contain mx-auto mb-3"
               style={{ background: "var(--surface)", opacity: logoBusy ? 0.5 : 1 }}
             />
           ) : (
             <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-2 font-bold text-lg"
+              className="w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-3 font-bold text-3xl"
               style={{
                 background: "linear-gradient(135deg,#21c25e,#087443)",
                 color: "#fff",
@@ -394,8 +395,11 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
               {team.teamName.slice(0, 2).toUpperCase()}
             </div>
           )}
-          <span className="block text-xs mb-3" style={{ color: "var(--muted)" }}>
-            {logoBusy ? "…" : team.logoUrl ? t.changeLogo : t.addLogo}
+          <span
+            className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-xl text-sm font-semibold border transition-colors"
+            style={{ background: "var(--surface2)", color: "#21c25e", borderColor: "#21c25e" }}
+          >
+            {logoBusy ? "…" : `${team.logoUrl ? "🖼" : "＋"} ${team.logoUrl ? t.changeLogo : t.addLogo}`}
           </span>
         </label>
         <h1 className="text-2xl font-semibold mb-1" style={{ color: "var(--text)" }}>{t.addPlayers}</h1>
