@@ -3,10 +3,22 @@
     "apps": [],
     "details": [
       {
-        "appIDs": ["DFWA3PK2V9.com.alhussain.ligatech"],
+        "appIDs": [
+          "DFWA3PK2V9.com.alhussain.ligatech"
+        ],
         "components": [
-          { "/": "/join/*", "comment": "Team invite links open the join form" },
-          { "/": "/league/*", "comment": "Public league links open the league" }
+          {
+            "/": "/join/*",
+            "comment": "Team invite links open the join form"
+          },
+          {
+            "/": "/league/*",
+            "comment": "Public league links open the league"
+          },
+          {
+            "/": "/team/*",
+            "comment": "Player-team invite links open the join screen with the code"
+          }
         ]
       }
     ]
