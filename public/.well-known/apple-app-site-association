@@ -18,6 +18,10 @@
           {
             "/": "/team/*",
             "comment": "Player-team invite links open the join screen with the code"
+          },
+          {
+            "/": "/match/*",
+            "comment": "A shared game opens that game"
           }
         ]
       }
