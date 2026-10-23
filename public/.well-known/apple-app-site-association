@@ -22,6 +22,10 @@
           {
             "/": "/match/*",
             "comment": "A shared game opens that game"
+          },
+          {
+            "/": "/request/*",
+            "comment": "A shared need-players post opens that post"
           }
         ]
       }
