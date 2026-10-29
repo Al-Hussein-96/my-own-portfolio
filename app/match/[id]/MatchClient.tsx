@@ -12,15 +12,15 @@ const APP_STORE_URL = "";
 const MESSAGES = {
   en: {
     title: "A game for your team",
-    body: "Your captain shared a game on LigaTech. Open it in the app to see the time, the pitch and the other team.",
-    openInApp: "Open in the LigaTech app",
+    body: "Your captain shared a game on Nalaab. Open it in the app to see the time, the pitch and the other team.",
+    openInApp: "Open in the Nalaab app",
     getOnPlay: "Get it on Google Play",
     getOnAppStore: "Download on the App Store",
   },
   ar: {
     title: "مباراة لفريقك",
-    body: "شارك كابتنك مباراة على LigaTech. افتحها في التطبيق لترى الوقت والملعب والفريق الآخر.",
-    openInApp: "افتح في تطبيق LigaTech",
+    body: "شارك كابتنك مباراة على نلعب. افتحها في التطبيق لترى الوقت والملعب والفريق الآخر.",
+    openInApp: "افتح في تطبيق نلعب",
     getOnPlay: "حمّله من Google Play",
     getOnAppStore: "حمّله من App Store",
   },

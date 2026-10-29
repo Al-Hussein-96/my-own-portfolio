@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import RequestClient from "./RequestClient";
 
 export const metadata: Metadata = {
-  title: "LigaTech — A game needs players",
-  description: "A game near you needs players. Open LigaTech to see it and join.",
+  title: "Nalaab — A game needs players",
+  description: "A game near you needs players. Open Nalaab to see it and join.",
   robots: { index: false, follow: false },
 };
 

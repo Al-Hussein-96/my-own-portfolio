@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import TeamClient from "./TeamClient";
 
 export const metadata: Metadata = {
-  title: "LigaTech — Join a team",
-  description: "Your captain invited you. Open LigaTech and you are on the team.",
+  title: "Nalaab — Join a team",
+  description: "Your captain invited you. Open Nalaab and you are on the team.",
   robots: { index: false, follow: false },
 };
 
