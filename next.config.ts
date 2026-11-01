@@ -5,6 +5,14 @@ import type { NextConfig } from "next";
 // CORS filter answers it with 403. The route handler strips it.
 
 const nextConfig: NextConfig = {
+  // Nalaab's store-facing policy pages: plain HTML in public/nalaab, the same files as the
+  // mobile repo's docs/privacy-policy.html and docs/terms.html, served at clean URLs.
+  async rewrites() {
+    return [
+      { source: "/nalaab/privacy", destination: "/nalaab/privacy.html" },
+      { source: "/nalaab/terms", destination: "/nalaab/terms.html" },
+    ];
+  },
   async headers() {
     return [
       {
