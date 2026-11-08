@@ -26,6 +26,10 @@
           {
             "/": "/request/*",
             "comment": "A shared need-players post opens that post"
+          },
+          {
+            "/": "/r/*",
+            "comment": "The short link to a shared post, by its code"
           }
         ]
       }
