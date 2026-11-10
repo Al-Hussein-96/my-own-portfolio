@@ -5,8 +5,8 @@ import { redirect } from "next/navigation";
 // The one link the app shares: whoever sends it, the phone that opens it decides the store. It is
 // decided here on the server, so a link preview (no phone in its user agent) still gets this page.
 const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.alhussain.ligatech";
-// Filled in when the iOS app is live: https://apps.apple.com/app/id<APPLE_ID>
-const APP_STORE_URL = "";
+// TestFlight until the App Store listing is live, then https://apps.apple.com/app/id<APPLE_ID>
+const APP_STORE_URL = "https://testflight.apple.com/join/dUZRuArD";
 
 export const metadata: Metadata = {
   title: "نلعب | Nalaab",
@@ -22,14 +22,14 @@ const MESSAGES = {
     title: "نلعب",
     body: "اعثر على مباريات كرة قدم قريبة منك، اطلب لاعبين لمباراتك وتابع الدوريات.",
     play: "حمّله من Google Play",
-    appStore: "حمّله من App Store",
+    appStore: "حمّله على iPhone (TestFlight)",
     iphoneSoon: "نلعب قادم قريباً إلى iPhone.",
   },
   en: {
     title: "Nalaab",
     body: "Find football games near you, get players for yours and follow the leagues.",
     play: "Get it on Google Play",
-    appStore: "Download on the App Store",
+    appStore: "Get it on iPhone (TestFlight)",
     iphoneSoon: "Nalaab is coming to iPhone soon.",
   },
 };
