@@ -43,7 +43,7 @@ const MESSAGES = {
     invalidLink: "Invalid invite link",
     invalidLinkDesc: "This invite link is invalid or has expired.",
     registrationClosed: "Registration closed",
-    registrationClosedDesc: "This league has started — no more players can be added.",
+    registrationClosedDesc: "This league has finished — no more players can be added.",
     squadFull: "Squad is full",
     squadFullDesc: (n: number, max: number) => `already has ${n} of ${max} players registered.`,
     allAdded: "Players added!",
@@ -63,21 +63,21 @@ const MESSAGES = {
     atLeastOne: "Enter at least one player name.",
     onlyNSpots: (n: number) => `Only ${n} spot${n === 1 ? "" : "s"} remaining.`,
     someFailed: (n: number) => `${n} player${n === 1 ? "" : "s"} failed to save — fix and submit again.`,
-    openInApp: "Open in the LigaTech app",
+    openInApp: "Open in the Nalaab app",
     getOnPlay: "Get the app on Google Play",
     getOnAppStore: "Download the app on the App Store",
     badJersey: "Shirt number must be between 1 and 99.",
     addLogo: "Add team logo",
     changeLogo: "Change team logo",
     logoTooBig: "The image must be 5MB or smaller.",
-    poweredBy: "Powered by LigaTech · This link was shared by your team's organizer",
+    poweredBy: "Nalaab · This link was shared by your league's organizer",
     toggle: "العربية",
   },
   ar: {
     invalidLink: "رابط دعوة غير صالح",
     invalidLinkDesc: "هذا الرابط غير صالح أو انتهت صلاحيته.",
     registrationClosed: "التسجيل مغلق",
-    registrationClosedDesc: "بدأ هذا الدوري — لا يمكن إضافة لاعبين جدد.",
+    registrationClosedDesc: "انتهى هذا الدوري — لا يمكن إضافة لاعبين جدد.",
     squadFull: "الفريق مكتمل",
     squadFullDesc: (n: number, max: number) => `لديه بالفعل ${n} من أصل ${max} لاعباً مسجلاً.`,
     allAdded: "تمت إضافة اللاعبين!",
@@ -97,14 +97,14 @@ const MESSAGES = {
     atLeastOne: "أدخل اسم لاعب واحد على الأقل.",
     onlyNSpots: (n: number) => `${n} مقاعد متبقية فقط.`,
     someFailed: (n: number) => `فشل حفظ ${n} لاعبين — صحّح وأعد الإرسال.`,
-    openInApp: "افتح في تطبيق LigaTech",
+    openInApp: "افتح في تطبيق نلعب",
     getOnPlay: "حمّل التطبيق من Google Play",
     getOnAppStore: "حمّل التطبيق من App Store",
     badJersey: "يجب أن يكون رقم القميص بين 1 و99.",
     addLogo: "أضف شعار الفريق",
     changeLogo: "غيّر شعار الفريق",
     logoTooBig: "يجب ألا يتجاوز حجم الصورة 5 ميغابايت.",
-    poweredBy: "مدعوم من LigaTech · شارك منظم فريقك هذا الرابط",
+    poweredBy: "نلعب · شارك منظم الدوري هذا الرابط",
     toggle: "English",
   },
 };
@@ -177,7 +177,8 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
   }, [inviteToken]);
 
   const spotsLeft = team ? team.maxPlayersPerTeam - existing.length : 0;
-  const isLocked = team?.leagueStatus === "Active" || team?.leagueStatus === "Completed";
+  // A running league still takes players; the server refuses only a finished one.
+  const isLocked = team?.leagueStatus === "Completed";
   const filledCount = useMemo(() => rows.filter((r) => r.fullName.trim() && r.status !== "saved").length, [rows]);
   const deepLink = `ligatech://join/${inviteToken}`;
 

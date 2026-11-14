@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // The LigaTech backend, reached server-side so the browser stays same-origin.
-const BACKEND = "https://ligatech-api.mohammadalhussain.com";
+// NALAAB_API_ORIGIN points a local `next dev` at a local backend for testing.
+const BACKEND = process.env.NALAAB_API_ORIGIN ?? "https://ligatech-api.mohammadalhussain.com";
 
 /**
  * Why a route handler and not a next.config rewrite: a rewrite forwards the
