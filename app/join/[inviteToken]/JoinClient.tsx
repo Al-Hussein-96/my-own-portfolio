@@ -64,8 +64,7 @@ const MESSAGES = {
     onlyNSpots: (n: number) => `Only ${n} spot${n === 1 ? "" : "s"} remaining.`,
     someFailed: (n: number) => `${n} player${n === 1 ? "" : "s"} failed to save — fix and submit again.`,
     openInApp: "Open in the Nalaab app",
-    getOnPlay: "Get the app on Google Play",
-    getOnAppStore: "Download the app on the App Store",
+    getApp: "Get the Nalaab app (Android & iPhone)",
     badJersey: "Shirt number must be between 1 and 99.",
     addLogo: "Add team logo",
     changeLogo: "Change team logo",
@@ -98,8 +97,7 @@ const MESSAGES = {
     onlyNSpots: (n: number) => `${n} مقاعد متبقية فقط.`,
     someFailed: (n: number) => `فشل حفظ ${n} لاعبين — صحّح وأعد الإرسال.`,
     openInApp: "افتح في تطبيق نلعب",
-    getOnPlay: "حمّل التطبيق من Google Play",
-    getOnAppStore: "حمّل التطبيق من App Store",
+    getApp: "حمّل تطبيق نلعب (أندرويد وآيفون)",
     badJersey: "يجب أن يكون رقم القميص بين 1 و99.",
     addLogo: "أضف شعار الفريق",
     changeLogo: "غيّر شعار الفريق",
@@ -118,7 +116,8 @@ function normalizePhone(value: string): string | null {
 let nextId = 1;
 const newRow = (): Row => ({ id: nextId++, fullName: "", jerseyNumber: "", phoneNumber: "", status: "idle" });
 
-const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.alhussain.ligatech";
+// The smart link: picks the right store (or the iPhone install steps) per phone.
+const GET_APP_URL = "/nalaab/get";
 
 // Where uploaded images are served from. The backend names its own host in
 // logoUrl (sometimes "localhost"), so only the path is trusted and re-based —
@@ -131,10 +130,6 @@ function mediaUrl(url: string): string {
 }
 
 const MAX_LOGO_BYTES = 5 * 1024 * 1024;
-// Empty until the app ships on the App Store — the iOS badge stays hidden so
-// the page never links to a listing that does not exist. Fill in
-// https://apps.apple.com/app/id<APPLE_ID> when it goes live.
-const APP_STORE_URL = "";
 
 export default function JoinClient({ inviteToken }: { inviteToken: string }) {
   const [locale, setLocale] = useState<"en" | "ar">("en");
@@ -151,16 +146,9 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
   const [banner, setBanner] = useState<string | null>(null);
   const [logoBusy, setLogoBusy] = useState(false);
 
-  // Which store badge to show. UA sniffing is fine here: getting it wrong
-  // just shows the other store's badge, and desktop shows whatever exists.
-  const [platform, setPlatform] = useState<"android" | "ios" | "other">("other");
-
   useEffect(() => {
     if (typeof navigator === "undefined") return;
     if (navigator.language?.startsWith("ar")) setLocale("ar");
-    const ua = navigator.userAgent;
-    if (/android/i.test(ua)) setPlatform("android");
-    else if (/iPhone|iPad|iPod/i.test(ua)) setPlatform("ios");
   }, []);
 
   useEffect(() => {
@@ -336,29 +324,15 @@ export default function JoinClient({ inviteToken }: { inviteToken: string }) {
         📱 {t.openInApp}
       </a>
 
-      {/* The store badge for whoever landed here WITHOUT the app — the OS only
-          shows this page when the app did not intercept the link. Platform-
-          matched; desktop gets every store that exists. */}
-      <div className="mb-8 space-y-2">
-        {platform !== "ios" && (
-          <a
-            href={PLAY_STORE_URL}
-            className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold rounded-lg"
-            style={{ background: "var(--surface2)", color: "#21c25e", border: "1px solid var(--border2)" }}
-          >
-            ▶ {t.getOnPlay}
-          </a>
-        )}
-        {platform !== "android" && APP_STORE_URL && (
-          <a
-            href={APP_STORE_URL}
-            className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold rounded-lg"
-            style={{ background: "var(--surface2)", color: "#21c25e", border: "1px solid var(--border2)" }}
-          >
-             {t.getOnAppStore}
-          </a>
-        )}
-      </div>
+      {/* One smart link for whoever landed here WITHOUT the app: /nalaab/get
+          sends Android to Google Play and iPhones to the iOS install steps. */}
+      <a
+        href={GET_APP_URL}
+        className="w-full flex items-center justify-center gap-2 py-2.5 mb-8 text-sm font-semibold rounded-lg"
+        style={{ background: "var(--surface2)", color: "#21c25e", border: "1px solid var(--border2)" }}
+      >
+        ⬇ {t.getApp}
+      </a>
 
       <div className="text-center mb-8">
         {/* The badge is a big tappable upload target, and the button below
